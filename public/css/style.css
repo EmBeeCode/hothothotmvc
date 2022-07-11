@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root {
+  --background-color: rgb(199, 227, 253);
+  --header-color: rgb(152, 205, 255);
+  --text-color: #1f1f1f;
+
+  --title-font: "Bebas Neue", cursive;
+  --text-font: "Open Sans", serif;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  background: linear-gradient( 180deg, rgb(255, 255, 255) 90%, rgb(255, 198, 73) 100%, rgb(255, 0, 0) 120% );
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--header-color) 0%,
+    rgb(255, 255, 255) 90%
+  );
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 70vw;
+}
+
+nav menu {
+  width: 15vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav li {
+  font-family: var(--title-font);
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+section {
+  height: 50%;
+  width: 50%;
+  max-width: 450px;
+  margin: auto;
+  margin-top: 1.5rem;
+}
+
+footer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+}
+
+h1,
+h1 a,
+h2{
+  color: var(--text-color);
+  font-family: var(--title-font);
+  text-decoration: none;
+}
+
+h3{
+  font-family: var(--text-font);
+  margin: 3px;
+}
+
+li {
+  list-style: none;
+}
+
+section ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+section li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  padding: 3px;
+  list-style: none;
+  background-color: rgb(248, 247, 165);
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid var(--header-color);
+}
+
+.buttons-container{
+  margin-left: auto;
+}
+
+.thermo-icon
+{
+  font-size: 1.5em;
+}
+
+.button a {
+  color: var(--secondary-color-dark);
+}
+
+.button-delete:hover {
+  background-color: rgb(255, 83, 83);
+}
+
+form {
+  font-family: var(--text-font);
+  display: inline;
+}
+
+form button{
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+form label {
+  display: flex;
+}
+
+form input {
+  width: 80%;
+}
+
+table,
+thead,
+tr,
+td {
+  border: 2px solid black;
+  padding: 2px;
+}
