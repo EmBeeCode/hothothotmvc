@@ -10,11 +10,11 @@
 
                 <p>Entrez une adresse https://hothothot.dog</p>
                 <label for="url">URL</label>
-                <input type="url"  name="url" id="url-input"></input>
+                <input type="url" name="url" id="url-input"></input>
 
                 <button type="submit">OK</button>
                 </form>
-                <form action="index.php?ctrl=page" method="post">
+                <form action="index.php?ctrl=sensors" method="post">
                     <button>Annuler</button>
                 </form>
     </section>

@@ -2,7 +2,7 @@
 
 abstract class Model
 {
-    private ?PDO $connection = null;
+    private static ?PDO $connection = null;
     protected string $table;
 
     public function __construct()
@@ -14,20 +14,20 @@ abstract class Model
      * 
      * @return PDO
      */
-    private function getPDO(): PDO
+    private function initPDO(): PDO
     {
-        if (!$this->connection) {
+        if (!self::$connection) {
             $config = $this->parseConfig(Constants::SERVER_CONFIG);
             extract($config);
 
             try {
-                $this->connection = new PDO($dsn, $user, $pass);
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$connection = new PDO($dsn, $user, $pass);
+                self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $PDOError) {
                 $PDOError->getMessage('La connexion à la base de données a échoué');
             }
         }
-        return $this->connection;
+        return self::$connection;
     }
 
     /**
@@ -55,7 +55,7 @@ abstract class Model
      */
     protected function executeQuery(string $sql, array $params = null): PDOStatement
     {
-        $statement = $this->getPDO()->prepare($sql);
+        $statement = $this->initPDO()->prepare($sql);
         $statement->execute($params);
 
         return $statement;
@@ -68,7 +68,7 @@ abstract class Model
      */
     public function returnLastId(): string|false
     {
-        return $this->getPDO()->lastInsertId();
+        return $this->initPDO()->lastInsertId();
     }
 
     /**

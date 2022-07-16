@@ -16,7 +16,7 @@
                     </span>
 
                     <div class="buttons-container">
-                        <form action="index.php?ctrl=page&action=edit&id=<?= $sensor['db_data']['id'] ?>" method="post">
+                        <form action="index.php?ctrl=sensors&action=edit&id=<?= $sensor['db_data']['id'] ?>" method="post">
                             <button class="button button-edit">Editer</button>
                         </form>
                         <form action="index.php?ctrl=sensors&action=delete&id=<?= $sensor['db_data']['id'] ?>" method="post">
@@ -29,7 +29,7 @@
 
         </ul>
 
-        <form action="index.php?ctrl=page&action=creation" method="post">
+        <form action="index.php?ctrl=sensors&action=creation" method="post">
             <button class="button button-add">Ajouter capteur</button>
         </form>
         <form action="index.php?ctrl=sensors&action=store" method="post">

@@ -215,64 +215,49 @@ class Sensor extends Model
     }
 
 
+    public function fetchAll($url)
+    {
+        $name      = $this->fetchName($url);
+        $type      = $this->fetchType($url);
+        $timestamp = $this->fetchTimestamp($url);
+    }
 
-    //-----------------------------------------
+    public function fetchValue(string $url)
+    {
+        $json = $this->fetchWebAPI($url);
+        return $json['capteurs'][0]['Valeur'];
+    }
 
+    public function fetchTimestamp(string $url)
+    {
+        $json = $this->fetchWebAPI($url);
+        return $json['capteurs'][0]['Timestamp'];
+    }
 
+    public function fetchType(string $url)
+    {
+        $json = $this->fetchWebAPI($url);
+        return $json['capteurs'][0]['Type'];
+    }
 
+    public function fetchName(string $url)
+    {
+        $sensor = $this->fetchWebAPI($url);
 
-    // public function fetchAll($url)
-    // {
-    //     $name      = $this->fetchName($url);
-    //     $type      = $this->fetchType($url);
-    //     $timestamp = $this->fetchTimestamp($url);
-    // }
+        $name = $sensor['capteurs'][0]['Nom'];
 
-    // public function fetchValue(string $url)
-    // {
-    //     $json = $this->fetchWebAPI($url);
-    //     return $json['capteurs'][0]['Valeur'];
-    // }
-
-    // public function fetchTimestamp(string $url)
-    // {
-    //     $json = $this->fetchWebAPI($url);
-    //     return $json['capteurs'][0]['Timestamp'];
-    // }
-
-    // public function fetchType(string $url)
-    // {
-    //     $json = $this->fetchWebAPI($url);
-    //     return $json['capteurs'][0]['Type'];
-    // }
-
-    // public function fetchName(string $url)
-    // {
-    //     $sensor = $this->fetchWebAPI($url);
-
-    //     $name = $sensor['capteurs'][0]['Nom'];
-
-    //     switch ($name) {
-    //         case 'interieur':
-    //             $name = 'Intérieur';
-    //             break;
-    //         case 'exterieur':
-    //             $name = 'Extérieur';
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     return $name;
-    // }
-
-    // private function controlURL(string $url): bool
-    // {
-    //     if ($url != 'https://hothothot.dog/api/capteurs/interieur' || $url != 'https://hothothot.dog/api/capteurs/exterieur') {
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
+        switch ($name) {
+            case 'interieur':
+                $name = 'Intérieur';
+                break;
+            case 'exterieur':
+                $name = 'Extérieur';
+                break;
+            default:
+                break;
+        }
+        return $name;
+    }
 
     // public function create()
     // {

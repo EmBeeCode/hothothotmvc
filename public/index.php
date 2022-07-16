@@ -21,7 +21,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 /**
  * @var array
  */
-$url_params['controller'] = $ctrl === null ? 'ControllerPage' : 'Controller' . ucfirst($ctrl);
+$url_params['controller'] = $ctrl === null ? 'ControllerSensors' : 'Controller' . ucfirst($ctrl);
 $url_params['action'] = $action === null ? 'defaultAction' : ucfirst($action) . 'Action';
 
 extract($url_params);
